@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Upload file</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'csv_upload/style.css' %}">
+</head>
+
+<body>
+    <form action="{% url 'csv_upload.views.upload_file' %}" method="post" enctype="multipart/form-data"
+        id="upload-file">
+        {% csrf_token %}
+        <div class="file-upload">
+            <div class="file-select">
+                <div class="file-select-button" id="fileName">Choose File</div>
+                <div class="file-select-name" id="noFile">No file chosen...</div>
+                <input type="file" name="file" id="id_file" required>
+            </div>
+        </div>
+        <button name="submit" type="submit" data-submit="...Sending">Submit</button>
+    </form>
+
+</body>
+<script type="text/javascript" src="{% static 'csv_upload/upload.js' %}"></script>
+</html>

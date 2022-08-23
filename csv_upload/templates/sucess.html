@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Upload file success</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'csv_upload/style.css' %}">
+</head>
+
+<body>
+    <div>
+        <div>Document uploaded successfully</div>
+        <div><a href="{% url 'csv_upload.views.upload_file' %}">>>>>Upload another document</a></div>
+    </div>
+</body>
+
+
+</html>
