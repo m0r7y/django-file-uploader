@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html>
+{% extends 'csv_upload/base.html' %}
+{% load static %}
 
-<head>
-    <meta charset="utf-8" />
-    <title>Upload file</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'csv_upload/style.css' %}">
-</head>
+{% block content %}
 
 <body>
     <form action="{% url 'csv_upload.views.upload_file' %}" method="post" enctype="multipart/form-data"
@@ -24,4 +19,4 @@
 
 </body>
 <script type="text/javascript" src="{% static 'csv_upload/upload.js' %}"></script>
-</html>
+{% endblock %}

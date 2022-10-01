@@ -46,12 +46,12 @@ def upload_file(request: HttpRequest) -> HttpResponse:
             return HttpResponseRedirect('success/')
     else:
         form = UploadFileForm()
-    return render(request, 'upload.html', {'form': form})
+    return render(request, 'csv_upload/upload.html', {'form': form})
 
 
 @require_GET
 def upload_file_success(request: HttpRequest) -> HttpResponse:
-    return render(request, 'sucess.html')
+    return render(request, 'csv_upload/sucess.html')
 
 
 @require_GET
