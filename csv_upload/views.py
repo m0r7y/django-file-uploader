@@ -24,6 +24,7 @@ def mapdict(values: Dict[str, Union[str, float]]):
         values['etape'] = float(values['etape'])
     except ValueError:
         pass
+    values['file_format'] = values['file_format'] or None
     return Document(**values)
 
 

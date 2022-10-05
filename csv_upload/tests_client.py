@@ -56,6 +56,17 @@ class ClientTest(unittest.TestCase):
                 'file_format': 'PDFC',
             }
         )
+        writer.writerow(
+            {
+                'numdos': 'DD353055',
+                'numdosverling': 'DD353055',
+                'ancart': 'LNEN50266-2-1',
+                'filiere': 'ETR',
+                'etape': 99.60,
+                'verling': 'E',
+                'file_format': '',
+            }
+        )
         response = self.client.post(
             '/document/upload/',
             {'file': io.StringIO(io_string.getvalue())},  # weird
@@ -64,6 +75,9 @@ class ClientTest(unittest.TestCase):
         self.assertEqual(response.redirect_chain, [('success/', 302)])
         document = Document.objects.filter(numdos='DD353051')
         self.assertTrue(document.exists())
+
+        document = Document.objects.get(numdos='DD353055')
+        self.assertIsNone(document.file_format)
 
         # invalid form, plain test
         response = self.client.post(

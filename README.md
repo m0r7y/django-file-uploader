@@ -7,8 +7,8 @@ python3 -m venv < your virtualenv name >
 Activating venv
 source < your virtualenv name >/bin/activate
 
-Installing requirments
-pip install -r requirments.txt
+Installing requirements
+pip install -r requirements.txt
 
 Initiate project
 django-admin startproject < your project name > .

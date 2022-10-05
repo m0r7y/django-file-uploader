@@ -13,7 +13,6 @@ class Document(models.Model):
         PDFRL = 'PDFRL'
         XML = 'XML'
         XMLRL = 'XMLRL'
-        NO_FORMAT = ''
 
     numdos = models.CharField(max_length=10, db_index=True)
     numdosverling = models.CharField(max_length=10)
@@ -21,10 +20,12 @@ class Document(models.Model):
     filiere = models.CharField(max_length=5)
     etape = models.FloatField()
     verling = models.CharField(max_length=8)
-    file_format = models.CharField(max_length=15, choices=FileFormat.choices)
+    file_format = models.CharField(
+        max_length=15, default=None, null=True, choices=FileFormat.choices
+    )
 
     def __str__(self) -> str:
-        return f'{self.numdos}.{self.file_format}'
+        return f'{self.numdos}.{self.file_format}' if self.file_format else self.numdos
 
     @staticmethod
     def document_fields() -> List[str]:
